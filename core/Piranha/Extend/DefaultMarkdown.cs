@@ -9,6 +9,7 @@
  */
 
 using Markdig;
+using Markdig.SyntaxHighlighting;
 
 namespace Piranha.Extend;
 
@@ -17,6 +18,13 @@ namespace Piranha.Extend;
 /// </summary>
 public class DefaultMarkdown : IMarkdown
 {
+    public DefaultMarkdown()
+    {
+        _pipeline = new MarkdownPipelineBuilder()
+            .UseSyntaxHighlighting()
+            .Build();
+    }
+
     /// <summary>
     /// Gets/sets the additional pipeline to use
     /// for markdown transformation.
